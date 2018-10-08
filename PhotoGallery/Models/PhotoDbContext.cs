@@ -12,6 +12,6 @@ namespace PhotoGallery.Models
             : base(options)
         { } 
 
-
+        DbSet<PhotoImage> PhotoImages { get; set; }
     }
 }
