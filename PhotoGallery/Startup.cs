@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using PhotoGallery.Models;
+using PhotoGallery.Services;
 
 namespace PhotoGallery
 {
@@ -27,6 +28,8 @@ namespace PhotoGallery
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<PhotoDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddTransient<PhotoImageStorageService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
