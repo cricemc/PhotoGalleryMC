@@ -1,4 +1,4 @@
-﻿
+﻿@model List<string>
 @{
     ViewData["Title"] = "Image Gallery";
 }
@@ -18,5 +18,27 @@
                 </div>
             </form>
         </div>
+    </div>
+
+    <div class="row">
+        @if (Model != null && Model.Count > 0)
+        {
+
+            @foreach (var imageUrl in Model)
+            {
+                <div class="col-md-2">
+             
+                        <a href="@imageUrl" class="thumbnail">
+                            <img src="@imageUrl" width="600" />
+                        </a>
+
+                </div>
+            }
+
+        }
+        else
+        {
+            < h1 > No images to display.</ h1 >
+        }
     </div>
 </div>

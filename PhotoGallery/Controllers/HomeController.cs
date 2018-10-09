@@ -23,7 +23,16 @@ namespace PhotoGallery.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            List<string> imageUrls = new List<string>();
+
+            var photoImages = _dbContext.PhotoImages.ToList();
+
+            foreach(var image in photoImages)
+            {
+                imageUrls.Add(_photoImageStorageService.UrlFor(image.Url));
+            }
+
+            return View(imageUrls);
         }
         
         public async Task<IActionResult> Upload(IFormCollection formCollection)
