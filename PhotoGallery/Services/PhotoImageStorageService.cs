@@ -60,7 +60,7 @@ namespace PhotoGallery.Services
 
             string sharedAccessSignature = blob.GetSharedAccessSignature(sharedAccessSignaturePolicy);
 
-            return $"{_baseUrl}images/{imageIdentifier}{sharedAccessSignature}";
+            return $"{_baseUrl}{_configuration["ContainerName"]}/{imageIdentifier}{sharedAccessSignature}";
 
         }
 
